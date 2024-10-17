@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import {
-  Button,
   ButtonGroup,
   Col,
   Container,
@@ -9,12 +8,14 @@ import {
   ToggleButton,
 } from "react-bootstrap";
 import AuthForm from "./AuthForm";
+import { useChatContext } from "../../context/ChatProvider";
 
-function Auth() {
+const Auth = () => {
+  const { login } = useChatContext();
   const [isLogin, setIsLogin] = useState(true);
   const [radioValue, setRadioValue] = useState("1");
   const loginHandler = (user) => {
-    console.log(user);
+    login("token ", user);
   };
   const signupHandler = (user) => {
     console.log(user);
@@ -63,6 +64,6 @@ function Auth() {
       </Row>
     </Container>
   );
-}
+};
 
 export default Auth;
