@@ -1,6 +1,6 @@
 import React from "react";
 
-import SideDrawer from "../components/Layout/SideDrawer";
+import Header from "../components/Layout/Header";
 import MyChats from "../components/Chat/MyChats";
 import ChatBox from "../components/Chat/ChatBox";
 
@@ -8,7 +8,7 @@ const ChatPage = () => {
   return (
     <section className="main">
       <div className="row-center">
-        <SideDrawer />
+        <Header />
       </div>
       <div className="row-between">
         <MyChats />

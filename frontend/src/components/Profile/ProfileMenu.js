@@ -1,16 +1,20 @@
 import React from "react";
 import { Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { useAuthContext } from "../../context/AuthProvider";
 
-const ProfileMenu = () => {
+const ProfileMenu = (props) => {
+  const { logout } = useAuthContext();
+  const profileClickHandler = () => {
+    props.onOpenProfile();
+  };
+
+  const logoutClickHandler = () => {
+    logout();
+  };
+
   return (
     <Navbar style={{ marginInline: "10px" }}>
       <Nav>
-        {/* <Image
-          src="/favicon.ico"
-          roundedCircle
-          alt="Profile"
-          style={{ width: "40px", height: "40px" }}
-        /> */}
         <NavDropdown
           id="nav-dropdown-dark-example"
           title={
@@ -23,9 +27,13 @@ const ProfileMenu = () => {
           }
           align="end"
         >
-          <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+          <NavDropdown.Item onClick={profileClickHandler}>
+            Profile
+          </NavDropdown.Item>
           <NavDropdown.Divider />
-          <NavDropdown.Item href="logout">Logout</NavDropdown.Item>
+          <NavDropdown.Item onClick={logoutClickHandler}>
+            Logout
+          </NavDropdown.Item>
         </NavDropdown>
       </Nav>
     </Navbar>

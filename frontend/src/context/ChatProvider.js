@@ -1,5 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { createContext, useContext, useState } from "react";
 
 const ChatContext = createContext();
 
@@ -8,43 +7,25 @@ export function useChatContext() {
 }
 
 export function ChatProvider({ children }) {
-  const navigate = useNavigate();
-  const isToken = localStorage.getItem("userToken") ? true : false;
   if (!localStorage.getItem("userInfo"))
     localStorage.setItem("userInfo", "{name:'',email:''}");
   let getUser = JSON.parse(localStorage.getItem("userInfo"));
-  const [token, setToken] = useState(localStorage.getItem("userToken") || "");
-  const [isAuthenticated, setIsAuthenticated] = useState(isToken);
   const [user, setUser] = useState(getUser);
+  const [chat, setChat] = useState([]);
 
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/");
-    }
-  }, [isAuthenticated]);
-
-  const login = (getToken, user) => {
-    const bearerToken = `Bearer ${getToken}`;
-    localStorage.setItem("userToken", bearerToken);
+  const setNewUser = (user) => {
     localStorage.setItem("userInfo", JSON.stringify(user));
-    setToken(bearerToken);
     setUser(user);
-    setIsAuthenticated(true);
-    navigate("/");
   };
-
-  const logout = () => {
-    setToken("");
-    setIsAuthenticated(false);
-    setUser({ name: "", email: "" });
+  const setNewChat = () => {
+    setChat();
   };
 
   const value = {
-    isAuthenticated,
-    token,
     user,
-    login,
-    logout,
+    chat,
+    setNewUser,
+    setNewChat,
   };
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;

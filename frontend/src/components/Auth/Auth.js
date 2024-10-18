@@ -8,14 +8,14 @@ import {
   ToggleButton,
 } from "react-bootstrap";
 import AuthForm from "./AuthForm";
-import { useChatContext } from "../../context/ChatProvider";
+import { useAuthContext } from "../../context/AuthProvider";
 
 const Auth = () => {
-  const { login } = useChatContext();
+  const { login } = useAuthContext();
   const [isLogin, setIsLogin] = useState(true);
   const [radioValue, setRadioValue] = useState("1");
-  const loginHandler = (user) => {
-    login("token ", user);
+  const loginHandler = () => {
+    login("token ");
   };
   const signupHandler = (user) => {
     console.log(user);
