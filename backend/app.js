@@ -7,12 +7,16 @@ const bodyParser = require("body-parser");
 
 const app = express();
 
+const errorHandler = require("./middlewares/errorHandler");
+
 const authRoute = require("./routers/auth");
 
 app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/auth", authRoute);
+
+app.use(errorHandler);
 
 app.use("*", (req, res) => {
   res.status(404), json({ message: "route not found!" });
