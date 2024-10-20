@@ -1,1 +1,35 @@
+body {
+  width: 100vw;
+}
 
+.main {
+  width: 100vw;
+  max-width: 100vw;
+}
+
+.row {
+  display: flex;
+  align-content: center;
+}
+
+.row-center {
+  display: flex;
+  justify-content: center;
+}
+
+.row-around {
+  display: flex;
+  justify-content: space-around;
+}
+
+.row-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sideDrawer {
+  width: 100vw;
+  padding: 5px;
+  background-color: rgba(180, 211, 70, 0.3);
+}

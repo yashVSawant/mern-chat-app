@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import {
-  Button,
   ButtonGroup,
   Col,
   Container,
@@ -9,12 +8,14 @@ import {
   ToggleButton,
 } from "react-bootstrap";
 import AuthForm from "./AuthForm";
+import { useAuthContext } from "../../context/AuthProvider";
 
-function Auth() {
+const Auth = () => {
+  const { login } = useAuthContext();
   const [isLogin, setIsLogin] = useState(true);
   const [radioValue, setRadioValue] = useState("1");
-  const loginHandler = (user) => {
-    console.log(user);
+  const loginHandler = () => {
+    login("token ");
   };
   const signupHandler = (user) => {
     console.log(user);
@@ -63,6 +64,6 @@ function Auth() {
       </Row>
     </Container>
   );
-}
+};
 
 export default Auth;
