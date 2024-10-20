@@ -1,8 +1,7 @@
 import React from "react";
 import { Image } from "react-bootstrap";
 
-const User = (props) => {
-  const { user } = props;
+const Users = ({ user, onClick }) => {
   return (
     <div
       style={{
@@ -13,6 +12,7 @@ const User = (props) => {
         borderRadius: "5px",
         color: "white",
       }}
+      onClick={() => onClick(user.email)}
     >
       <div>
         <Image
@@ -31,4 +31,4 @@ const User = (props) => {
   );
 };
 
-export default User;
+export default Users;

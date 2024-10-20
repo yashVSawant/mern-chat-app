@@ -9,12 +9,12 @@ const Header = () => {
   const [openProfile, setOpenProfile] = useState(false);
 
   return (
-    <div className="row-between sideDrawer">
+    <div className="row-between header">
       <SearchDrawer />
       <h1>Chatters-App</h1>
       <div className="row-between">
         <div className="row" style={{ margin: "3px" }}>
-          <i class="fas fa-bell"></i>
+          <i className="fas fa-bell"></i>
         </div>
         {openProfile && (
           <Modal onClose={() => setOpenProfile(false)}>

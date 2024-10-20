@@ -25,11 +25,12 @@ body {
 .row-between {
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 
-.sideDrawer {
+.header {
   width: 100vw;
   padding: 5px;
+  height: 12vh;
   background-color: rgba(180, 211, 70, 0.3);
+  align-items: center;
 }
