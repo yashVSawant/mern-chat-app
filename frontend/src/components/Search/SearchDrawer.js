@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Offcanvas, OverlayTrigger, Tooltip } from "react-bootstrap";
 import Loader from "../Layout/Loader";
-import User from "./User";
+import Users from "./Users";
 
 const SearchDrawer = () => {
   const [show, setShow] = useState(false);
@@ -11,6 +11,7 @@ const SearchDrawer = () => {
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       search users to chat
@@ -41,6 +42,10 @@ const SearchDrawer = () => {
     setSearchResult(dummay);
   };
 
+  const userClickHandler = (id) => {
+    console.log(id);
+  };
+
   return (
     <React.Fragment>
       <OverlayTrigger
@@ -53,8 +58,8 @@ const SearchDrawer = () => {
           className="d-flex align-items-center m-2"
           onClick={handleShow}
         >
-          <i class="fas fa-search" style={{ marginInline: "1px" }}></i>
-          <text>search</text>
+          <i className="fas fa-search" style={{ marginInline: "1px" }}></i>
+          <span>search</span>
         </Button>
       </OverlayTrigger>
 
@@ -75,7 +80,7 @@ const SearchDrawer = () => {
           </div>
           <div>{isLoading && <Loader />}</div>
           {searchResult.map((u) => (
-            <User user={u} />
+            <Users key={u.name} user={u} onClick={userClickHandler} />
           ))}
         </Offcanvas.Body>
       </Offcanvas>
