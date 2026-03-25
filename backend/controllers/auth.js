@@ -16,6 +16,7 @@ exports.login = asyncErrorHandler(async (req, res) => {
   const isMatch = await bcrypt.compare(password, user.password);
   if (!isMatch) throw new ApiError("invalid credentials", 400);
   res.status(201).json({ token: genrateAccessToken(user.name, user._id) });
+  // testing
 });
 
 exports.signup = asyncErrorHandler(async (req, res) => {
